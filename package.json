@@ -1,0 +1,8 @@
+{
+  "name": "mongoose-encrypted-property",
+  "version": "1.0.0",
+  "main": "plugin.js",
+  "peerDependencies": {
+    "mongoose": "3.x"
+  }
+}

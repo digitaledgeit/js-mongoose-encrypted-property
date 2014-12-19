@@ -1,7 +1,13 @@
 {
   "name": "mongoose-encrypted-property",
+	"keywords": ["mongoose", "encrypt"],
+	"description": "Encrypt any property in a mongoose model.",
   "version": "1.0.0",
   "main": "plugin.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:digitaledgeit/js-mongoose-encrypted-property.git"
+	},
   "peerDependencies": {
     "mongoose": "3.x"
   }

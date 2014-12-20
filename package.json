@@ -2,7 +2,7 @@
   "name": "mongoose-encrypted-property",
 	"keywords": ["mongoose", "encrypt"],
 	"description": "Encrypt any property in a mongoose model.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "plugin.js",
 	"repository": {
 		"type": "git",

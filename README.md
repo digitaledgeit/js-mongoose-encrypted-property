@@ -1,6 +1,6 @@
 # mongoose-encrypted-property
 
-Encrypt any property in a mongoose model.  
+Encrypt any property on a mongoose model.  
 
 ## Installation
 

@@ -1,9 +1,9 @@
 {
   "name": "mongoose-encrypted-property",
 	"license": "MIT",
-	"keywords": ["mongoose", "encrypt"],
-	"description": "Encrypt any property in a mongoose model.",
-  "version": "1.0.4",
+	"keywords": ["mongoose", "encrypt", "encrypted", "mongodb", "protect", "password"],
+	"description": "Encrypt a property on a mongoose model when at rest.",
+  "version": "1.0.5",
   "main": "plugin.js",
 	"repository": {
 		"type": "git",

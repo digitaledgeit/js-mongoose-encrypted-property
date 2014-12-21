@@ -18,8 +18,7 @@ describe('mongoose-encrypted-property', function() {
 
 		schema.plugin(plugin, {
 			encryptionKey:      'password',
-			plaintextProperty:  'plaintext',
-			encryptedproperty:  'encrypted'
+			plaintextProperty:  'plaintext'
 		});
 
 		Model = mongoose.model('Model', schema);
@@ -39,7 +38,7 @@ describe('mongoose-encrypted-property', function() {
 		mongoose.disconnect(done);
 	});
 
-	it('should throw an error if not all properties are specified', function() {
+	it('should throw an error if not all required properties are specified', function() {
 		assert.throws(function() {
 			plugin({}, {});
 		});
@@ -50,9 +49,14 @@ describe('mongoose-encrypted-property', function() {
 		assert.equal(typeof(model.toObject().plaintext), 'undefined');
 	});
 
-	it('should store the ciphertext', function() {
+	it('should store the encrypted value', function() {
 		model.plaintext = {un: 'username', pw: 'password'};
-		assert.notEqual(typeof(model.toObject().encrypted), 'undefined');
+		assert.notEqual(typeof(model.toObject().encrypted_plaintext), 'undefined');
 	});
+
+	it('should return undefined when the property has no value', function() {
+		assert.equal(typeof(model.plaintext), 'undefined');
+	});
+
 
 });

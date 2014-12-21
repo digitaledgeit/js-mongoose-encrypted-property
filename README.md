@@ -1,6 +1,6 @@
 # mongoose-encrypted-property
 
-Encrypt any property on a mongoose model.  
+Encrypt a property on a mongoose model when at rest.  
 
 ## Installation
 
@@ -18,7 +18,7 @@ Encrypt any property on a mongoose model.
     schema.plugin(plugin, {
         encryptionKey:      'password',
         plaintextProperty:  'plaintext',
-        encryptedproperty:  'encrypted'
+        encryptedProperty:  'encrypted_plaintext'
     });
     
     var Model = mongoose.model('Model', schema);

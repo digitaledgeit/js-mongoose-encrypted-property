@@ -8,7 +8,7 @@ var crypto = require('crypto');
  */
 function encrypt(key, plaintext) {
 	var cipher = crypto.createCipher('aes-256-cbc', key);
-	var encrypted = cipher.update(plaintext,'utf8','hex');
+	var encrypted = cipher.update(plaintext, 'utf8', 'hex');
 	encrypted += cipher.final('hex');
 	return encrypted;
 };
@@ -21,7 +21,7 @@ function encrypt(key, plaintext) {
  */
 function decrypt(key, ciphertext) {
 	var decipher = crypto.createDecipher('aes-256-cbc', key);
-	var decrypted = decipher.update(ciphertext,'hex','utf8');
+	var decrypted = decipher.update(ciphertext, 'hex', 'utf8');
 	decrypted += decipher.final('utf8');
 	return decrypted;
 };
@@ -32,7 +32,7 @@ function decrypt(key, ciphertext) {
  * @param   {Object}  options
  * @param   {Object}  options.encryptionKey
  * @param   {Object}  options.plaintextProperty
- * @param   {Object}  options.encryptedproperty
+ * @param   {Object}  [options.encryptedProperty]
  */
 module.exports = function(schema, options) {
 	options = options || {};
@@ -45,28 +45,24 @@ module.exports = function(schema, options) {
 		throw new Error('Option `option.plaintextProperty` is not defined.');
 	}
 
-	if (!options.encryptedproperty) {
-		throw new Error('Option `option.encryptedproperty` is not defined.');
-	}
-
 	var encryptionKey     = options.encryptionKey;
 	var plaintextProperty = options.plaintextProperty;
-	var encryptedproperty = options.encryptedproperty;
+	var encryptedProperty = options.encryptedProperty || 'encrypted_'+options.plaintextProperty;
 
 	//add a property for the encrypted value
 	var dfn = {};
-	dfn[encryptedproperty] = 'String';
+	dfn[encryptedProperty] = 'String';
 	schema.add(dfn);
 
 	//add a virtual property for the plaintext value
 	schema.virtual(plaintextProperty)
 		.get(function() {
-			if (this[encryptedproperty]) {
-				return JSON.parse(decrypt(encryptionKey, this[encryptedproperty]));
+			if (this[encryptedProperty]) {
+				return JSON.parse(decrypt(encryptionKey, this[encryptedProperty]));
 			}
 		})
 		.set(function(value) {
-			this[encryptedproperty] = encrypt(encryptionKey, JSON.stringify(value));
+			this[encryptedProperty] = encrypt(encryptionKey, JSON.stringify(value));
 		})
 	;
 

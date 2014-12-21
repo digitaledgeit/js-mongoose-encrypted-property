@@ -3,7 +3,7 @@
 	"license": "MIT",
 	"keywords": ["mongoose", "encrypt"],
 	"description": "Encrypt any property in a mongoose model.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "plugin.js",
 	"repository": {
 		"type": "git",

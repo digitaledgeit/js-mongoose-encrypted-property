@@ -9,8 +9,7 @@ var schema = new mongoose.Schema({
 
 schema.plugin(plugin, {
 	encryptionKey:      'password',
-	plaintextProperty:  'plaintext',
-	encryptedproperty:  'encrypted'
+	plaintextProperty:  'plaintext'
 });
 
 var Model = mongoose.model('Model', schema);
@@ -21,5 +20,7 @@ model.plaintext = {un: 'username', pw: 'password'};
 
 // gets the `encrypted` property to the `JSON.stringify`ied and encrypted contents of `plaintext`.
 console.log(model.plaintext);
+
+console.log(model.toJSON());
 
 mongoose.disconnect();

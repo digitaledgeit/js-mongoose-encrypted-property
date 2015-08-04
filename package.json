@@ -1,15 +1,19 @@
 {
   "name": "mongoose-encrypted-property",
-	"license": "MIT",
-	"keywords": ["mongoose", "encrypt", "encrypted", "mongodb", "protect", "password"],
-	"description": "Encrypt a property on a mongoose model when at rest.",
-  "version": "1.0.5",
+  "version": "1.0.6",
+  "description": "Encrypt a property on a mongoose model when at rest.",
+  "keywords": [
+    "mongoose",
+    "encrypt",
+    "encrypted",
+    "mongodb",
+    "protect",
+    "password"
+  ],
   "main": "plugin.js",
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:digitaledgeit/js-mongoose-encrypted-property.git"
-	},
-  "peerDependencies": {
-    "mongoose": "3.x"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:digitaledgeit/js-mongoose-encrypted-property.git"
+  },
+  "license": "MIT"
 }

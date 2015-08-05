@@ -1,6 +1,6 @@
 {
   "name": "mongoose-encrypted-property",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Encrypt a property on a mongoose model when at rest.",
   "keywords": [
     "mongoose",

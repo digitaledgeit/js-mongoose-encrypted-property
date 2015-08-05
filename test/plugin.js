@@ -1,6 +1,6 @@
 var assert    = require('assert');
 var mongoose  = require('mongoose');
-var plugin    = require('..');
+var plugin    = require('../lib/plugin');
 
 var schema, Model, model;
 

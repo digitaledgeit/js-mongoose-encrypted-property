@@ -1,6 +1,8 @@
 # mongoose-encrypted-property
 
-Encrypt a property on a mongoose model when at rest.  
+Encrypt a property on a mongoose model when at rest.
+
+Uses the `aes-256-cbc` cipher.
 
 ## Installation
 
@@ -8,33 +10,42 @@ Encrypt a property on a mongoose model when at rest.
 
 ## Usage
 
-    var mongoose = require('mongoose');
-    var plugin = require('mongoose-encrypted-property');
-
+    var mongoose  = require('mongoose');
+    var plugin    = require('mongoose-encrypted-property');
+    
     schema = new mongoose.Schema({
-        title:  String
+      title:  String //etc
     });
 
     schema.plugin(plugin, {
-        encryptionKey:      'password',
-        plaintextProperty:  'plaintext',
-        encryptedProperty:  'encrypted_plaintext'
+      encryptionKey:      'your-encryption-key',
+      plaintextProperty:  'plaintext',
+      encryptedProperty:  'encrypted_plaintext'
     });
     
     var Model = mongoose.model('Model', schema);
     var model = new Model();
     
-    // sets the `encrypted` property to the `JSON.stringify`ied and encrypted contents of `plaintext`.
-    model.plaintext = {un: 'username', pw: 'password'}; 
+    // set the the `encrypted_plaintext` property to be the `JSON.stringify`ied and encrypted value.
+    model.plaintext = {
+      oauth_token:        '###',
+      oauth_token_secret: '###'
+    };
     
-    // gets the `encrypted` property to the `JSON.stringify`ied and encrypted contents of `plaintext`.
+    // get the decrypted and `JSON.parse`ed value of the `encrypted_plaintext` property.
     console.log(model.plaintext);
+
+## Options
+
+- **encryptionKey**: The key used for encryption.
+- **plaintextProperty**: The name of the property used for getting and setting the unencrypted value during use.
+- **encryptedProperty**: The name of the property used for storing and retrieving the encrypted value at rest. Defaults to `encrypted_{plaintextProperty}`.
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2014 James Newell
+Copyright (c) 2015 James Newell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

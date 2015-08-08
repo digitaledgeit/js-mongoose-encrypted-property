@@ -1,5 +1,7 @@
 # mongoose-encrypted-property
 
+[![Circle CI](https://circleci.com/gh/digitaledgeit/js-mongoose-encrypted-property.svg?style=svg)](https://circleci.com/gh/digitaledgeit/js-mongoose-encrypted-property)
+
 Encrypt a property on a mongoose model when at rest.
 
 ## Installation

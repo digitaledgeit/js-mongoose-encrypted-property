@@ -2,8 +2,6 @@
 
 Encrypt a property on a mongoose model when at rest.
 
-Uses the `aes-256-cbc` cipher.
-
 ## Installation
 
 	npm install --save mongoose-encrypted-property
@@ -18,9 +16,9 @@ Uses the `aes-256-cbc` cipher.
     });
 
     schema.plugin(plugin, {
-      encryptionKey:      'your-encryption-key',
+      secret:             'password',
       plaintextProperty:  'plaintext',
-      encryptedProperty:  'encrypted_plaintext'
+      ciphertextProperty: 'encrypted_plaintext'
     });
     
     var Model = mongoose.model('Model', schema);
@@ -37,9 +35,16 @@ Uses the `aes-256-cbc` cipher.
 
 ## Options
 
-- **encryptionKey**: The key used for encryption.
+- **secret**: The key used for encryption.
 - **plaintextProperty**: The name of the property used for getting and setting the unencrypted value during use.
-- **encryptedProperty**: The name of the property used for storing and retrieving the encrypted value at rest. Defaults to `encrypted_{plaintextProperty}`.
+- **ciphertextProperty**: The name of the property used for storing and retrieving the encrypted value at rest. Defaults to `encrypted_{plaintextProperty}`.
+
+## Changelog
+
+### 1.1.0
+
+- improve security of all newly encrypted values by using the `easy-encryption` module which hashes passwords to prevent dictionary attacks - previously encrypted values will still be decrypted
+- changed option names for consistency - previous option names will still work
 
 ## License
 

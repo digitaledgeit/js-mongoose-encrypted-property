@@ -10,10 +10,21 @@
     "protect",
     "password"
   ],
-  "main": "lib/plugin.js",
+  "main": "plugin.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:digitaledgeit/js-mongoose-encrypted-property.git"
+  },
+  "dependencies": {
+    "easy-encryption": "^0.1.1"
+  },
+  "devDependencies": {
+    "mongoose": "^4.1.1",
+    "mocha": "^2.2.5",
+    "mocha-jenkins-reporter": "^0.1.9"
+  },
+  "scripts": {
+    "test": "JUNIT_REPORT_PATH=$CIRCLE_TEST_REPORTS/results.xml mocha --reporter mocha-jenkins-reporter"
   },
   "license": "MIT"
 }
